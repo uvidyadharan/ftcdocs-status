@@ -27,8 +27,7 @@ jobs:
             cache: 'pip'
 
         - name: Python Install Dependencies
-          run: pip install -r docs/requirements.txt
-          working-directory: ./ftcdocs
+          run: pip install -r ./ftcdocs/docs/requirements.txt -r ./requirements.txt
           
         - name: Run Scraper
           env:
