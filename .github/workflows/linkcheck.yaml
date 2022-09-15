@@ -1,3 +1,30 @@
 name: "Link Check"
 author: "Uday Vidyadharan"
 
+on: 
+  workflow_dispatch:
+  schedule:
+    - cron: '0 */5 * * *'
+
+jobs:
+  link-check:
+    runs-on: ubuntu-latest
+
+    steps:
+        - name: Checkout Repository  
+          uses: actions/checkout@v3
+          with:
+            repository: FIRST-Tech-Challenge/ftcdocs
+            fetch-depth: 0
+
+        - name: Python Setup
+          uses: actions/setup-python@v4
+          with:
+            python-version: 3.8
+            cache: 'pip'
+
+        - name: Python Install Dependencies
+          run: pip install -r docs/requirements.txt
+          working-directory: ./ftcdocs
+          
+
