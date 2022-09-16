@@ -14,7 +14,7 @@ while True:
     subprocess.call(['pwd'])
     subprocess.call(['ls'])
 
-    status = subprocess.call(['make', '-C ftcdocs/docs/', 'linkcheck', 'SPHINXOPTS="-W --keep-going -n"'])
+    status = subprocess.call(['make', '-C', 'ftcdocs/docs/', 'linkcheck', 'SPHINXOPTS="-W --keep-going -n"'])
 
     if status != 0:
         try:        
