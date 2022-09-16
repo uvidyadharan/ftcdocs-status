@@ -19,8 +19,6 @@ while True:
                 old_errors = pickle.load(f)
         except:
             print("Could not load old errors")
-            
-        pb.push_note('FTC Docs Link Check failed', 'The FTC Docs Link Check failed. Please check the build logs.')
 
         with open("ftcdocs/docs/build/linkcheck/output.txt", "rb") as log:
             errors = [(line.strip()).split() for line in log]
@@ -28,7 +26,7 @@ while True:
         if old_errors != errors:
             for error in errors:
                 if error not in old_errors:
-                    pb.push_link("New Error", error)
+                    pb.push_note("New Error", error)
                     
             with open('errors.pickle', 'wb') as f:
                 pickle.dump(error, f)
