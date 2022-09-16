@@ -29,7 +29,7 @@ while True:
         if old_errors != errors:
             for error in errors:
                 if error not in old_errors:
-                    pb.push_note("New Error", error)
+                    pb.push_note("New Error", str(error))
                     
             with open('errors.pickle', 'wb') as f:
                 pickle.dump(error, f)
