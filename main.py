@@ -10,11 +10,11 @@ old_errors = []
 
 while True:
     os.system('cd ./ftcdocs && git pull -f')
-
-    subprocess.call(['pwd'])
-    subprocess.call(['ls'])
-
-    status = subprocess.call(['make', '-C', 'ftcdocs/docs/', 'linkcheck', 'SPHINXOPTS="-W --keep-going -n"'])
+    
+    env = os.environ.copy()
+    env["SPHINXOPTS"] = "-W --keep-going -n"
+    
+    status = subprocess.call(['make', '-C', 'ftcdocs/docs/', 'linkcheck'], env=env)
 
     if status != 0:
         try:        
