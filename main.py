@@ -11,7 +11,7 @@ old_errors = []
 while True:
     os.system('cd ./ftcdocs && git pull -f')
 
-    status = subprocess.call(['make', '-C docs/ linkcheck SPHINXOPTS="-W --keep-going -n"'])
+    status = subprocess.call(['make', '-C ftcdocs/docs/ linkcheck SPHINXOPTS="-W --keep-going -n"'])
 
     if status != 0:
         try:        
