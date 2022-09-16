@@ -33,3 +33,12 @@ jobs:
           env:
             PUSHBULLET_ACCESS_TOKEN: ${{ secrets.PUSHBULLET_ACCESS_TOKEN }}
           run: python3 main.py
+          
+        - name: Commit Urls
+          continue-on-error: true
+          id: commit
+          run: |
+            git config --local user.email "github-actions[bot]@users.noreply.github.com"
+            git config --local user.name "github-actions[bot]"
+            git add errors.pickle
+            git commit -m "Update errors.pickle"
